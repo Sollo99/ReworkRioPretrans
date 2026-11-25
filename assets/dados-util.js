@@ -10,9 +10,10 @@
     .toLowerCase().replace(/[().]/g, " ").replace(/\s+/g, " ").trim();
 
   RP.consertarAcentos = (value) => {
-    let text = value.replace(/(\p{Ll})([ÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜ])+/gu,
+    const text = value.replace(/(\p{Ll})([ÀÁÂÃÄÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜ])+/gu,
       (chunk) => chunk.toLowerCase());
-    return text.replace(/(?<=\p{L}\s)(De|Do|Da|Dos|Das|E)(?=\s\p{L})/gu, (word) => word.toLowerCase());
+    return text.replace(/(\s)(De|Do|Da|Dos|Das|E)(?=\s\p{L})/gu,
+      (match, space, word, offset) => /\p{L}$/u.test(text.slice(0, offset)) ? space + word.toLowerCase() : match);
   };
   RP.normalizar = (text) => plain(RP.consertarAcentos(text));
   RP.chaveVia = (text) => RP.normalizar(text).replace(prefix, "");
