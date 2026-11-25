@@ -85,19 +85,21 @@
         ${entry.lines.size === 1 ? "linha passa aqui" : "linhas passam aqui"}</span>
     </button>`).join("");
 
-  RP.conectarBusca = (input, results, { choose, lines = false, change = () => {}, focus = true }) => {
+  RP.conectarBusca = (input, results, { choose, lines = false, change = () => {}, rendered = () => {}, focus = true }) => {
     const draw = () => {
       const value = input.value.trim();
       const matches = RP.sugerir(value, lines);
       const term = RP.normalizar(value);
       const lineMatches = lines && term.length >= 1 ? (window.riopretransLines || [])
         .filter(([number, name]) => number === term || (term.length >= 2 && RP.normalizar(name).includes(term))).slice(0, 3) : [];
-      const similar = !matches.length && !lineMatches.length && value.length >= 3 ? RP.parecidos(value) : [];
+      const missing = !matches.length && !lineMatches.length && value.length >= 3;
+      const similar = missing ? RP.parecidos(value) : [];
       results.innerHTML = RP.listaResultados(matches) + (lineMatches.length ? "<h2>Linhas</h2>" + lineMatches.map(([num, name]) =>
         `<a class="rp-suggestion" href="${esc(RP.comParametros("horarios.html?linha=" + encodeURIComponent(num)))}">Linha ${esc(num)} · ${esc(name)}</a>`).join("") : "") +
-        (!matches.length && !lineMatches.length && value.length >= 3 ?
+        (missing ?
           '<p role="status"><strong>Não achamos esse lugar.</strong> Tente o nome da rua ou do bairro, sem o número.</p>' : "") +
         (similar.length ? "<p>Ruas com nome parecido:</p>" + RP.listaResultados(similar) : "");
+      rendered(missing);
     };
     input.addEventListener("input", () => { change(input.value); draw(); });
     input.addEventListener("keydown", (event) => {
@@ -117,13 +119,18 @@
   const home = document.querySelector("#rp-home-form");
   if (!home) return;
   const step = document.querySelector("#rp-home-step");
-  if (step) step.hidden = !RP.parametros().passos;
+  const demo = RP.parametros();
+  const showStep = (missing) => {
+    if (!step) return;
+    step.hidden = !demo.demo;
+    step.textContent = "Modo apresentação" + (demo.passos ? missing ? " · Passo 6a" : " · Passo 3" : "");
+  };
   for (const link of document.querySelectorAll(".rp-primary-links a, .rp-saved-link, .hero-copy a")) {
     link.href = RP.comParametros(link.getAttribute("href"));
   }
   const input = home.querySelector("input");
   const open = (value) => { location.href = RP.destinoUrl(value); };
-  RP.conectarBusca(input, home.querySelector(".rp-results"), { choose: (entry) => open(entry.key), lines: true });
+  RP.conectarBusca(input, home.querySelector(".rp-results"), { choose: (entry) => open(entry.key), lines: true, rendered: showStep });
   home.addEventListener("submit", (event) => {
     event.preventDefault();
     if (input.value.trim()) open(input.value.trim());

@@ -15,7 +15,12 @@
     new URLSearchParams({ destino: destinoChave, origem, linha, salva: "1" }));
   const button = (action, label, primary = false) =>
     `<button type="button" class="button ${primary ? "button-dark" : "button-outline"}" data-action="${action}">${label}</button>`;
-  const demoLabel = (step) => demo.passos ? `<p class="rp-meta">Modo apresentação · ${step}</p>` : "";
+  const demoText = (step) => "Modo apresentação" + (demo.passos ? " · " + step : "");
+  const demoLabel = (step) => demo.demo ? `<p class="rp-meta" data-demo-step>${demoText(step)}</p>` : "";
+  const setStep = (step) => {
+    const badge = main.querySelector("[data-demo-step]");
+    if (badge) badge.textContent = demoText(step);
+  };
 
   if (saved) {
     const feedback = document.querySelector("#rp-feedback");
@@ -120,7 +125,9 @@
         `<button type="button" class="button button-outline" data-recent="${esc(item.key)}">${esc(item.label)}</button>`).join("") + "</div>" : "");
     const input = panel.querySelector("input");
     RP.conectarBusca(input, panel.querySelector(".rp-results"), {
-      choose: chooseDestination, lines: true, change: (value) => { destText = value; remember(); },
+      choose: chooseDestination, lines: true,
+      rendered: (missing) => setStep(missing ? "Passo 6a" : "Passos 4 a 7"),
+      change: (value) => { destText = value; remember(); },
     });
     panel.querySelector("form").addEventListener("submit", (event) => {
       event.preventDefault();
@@ -185,6 +192,7 @@
       manual = radio.value === "manual";
       origin = manual ? RP.local(originText)?.key || null : locationKey;
       group.hidden = !manual;
+      setStep(manual ? "Passo 9a" : "Passos 8 e 9");
       sync();
       remember();
       if (manual) input.focus();
@@ -227,7 +235,7 @@
         ${times.feriado ? "<p><strong>" + RP.FERIADO + "</strong></p>" : ""}
       </div>
       ${actions(button("save", "Salvar", true),
-        `<a class="button button-outline" href="https://wa.me/?text=${esc(encodeURIComponent(share))}" target="_blank" rel="noreferrer">Enviar pelo WhatsApp</a>`,
+        `<a class="button button-outline" data-share href="https://wa.me/?text=${esc(encodeURIComponent(share))}" target="_blank" rel="noreferrer">Enviar pelo WhatsApp</a>`,
         button("notify", "Avisar onde descer"))}
       <div id="rp-route-status" role="status"></div>
       ${actions(candidates.length > 1 ? button("options", "Outras opções") : "", button("new", "Nova busca"))}
@@ -289,7 +297,8 @@
     const message = ok ? navigator.serviceWorker?.controller ?
       "Rota salva. Abre sem internet em Minhas rotas." : "Rota salva em Minhas rotas." :
       "Não foi possível salvar neste navegador.";
-    main.querySelector("#rp-route-status").innerHTML = demoLabel("Passos 16 e 17") +
+    setStep("Passos 16 e 17");
+    main.querySelector("#rp-route-status").innerHTML =
       `<p>${message} <a href="${routesHref}">Ver Minhas rotas</a></p>`;
   }
 
@@ -299,6 +308,7 @@
   }
 
   main.addEventListener("click", (event) => {
+    if (event.target.closest("[data-share]")) setStep("Passo 16");
     const other = event.target.closest("[data-line]");
     if (other) {
       chosen = candidates.find(({ line }) => line.number === other.dataset.line);
@@ -319,6 +329,7 @@
       case "search": search(); break;
       case "save": saveRoute(); break;
       case "notify":
+        setStep("Passos 16 e 17");
         main.querySelector("#rp-route-status").textContent =
           "Aviso ativado (simulação): o app avisaria quando o ônibus estivesse chegando a " + destination.label + ".";
         break;

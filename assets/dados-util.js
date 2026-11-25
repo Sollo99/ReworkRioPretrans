@@ -27,6 +27,7 @@
   RP.parametros = () => {
     const params = new URLSearchParams(location.search);
     return { simular: new Set((params.get("simular") || "").split(",").filter(Boolean)),
+      demo: ["passos", "hora", "simular"].some((key) => params.has(key)),
       passos: params.get("passos") === "1", hora: params.get("hora") };
   };
   RP.comParametros = (href) => {
