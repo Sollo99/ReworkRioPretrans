@@ -1,6 +1,14 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <script>
+      try {
+        var rpText = Number(localStorage.getItem("riopretrans-texto"));
+        if ([100, 112.5, 125, 150, 175, 200].includes(rpText)) {
+          document.documentElement.style.fontSize = rpText + "%";
+        }
+      } catch {}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Planejar viagem | RioPretrans</title>

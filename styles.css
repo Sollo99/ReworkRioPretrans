@@ -40,7 +40,7 @@ input {
   justify-content: center;
   align-items: center;
   gap: 8px;
-  font-size: 11px;
+  font-size: 0.875rem;
   letter-spacing: 0.025em;
 }
 .announcement a {
@@ -91,7 +91,7 @@ input {
   font-family: var(--font-display);
   font-weight: 800;
   letter-spacing: -1.1px;
-  font-size: 19px;
+  font-size: 1.1875rem;
   line-height: 1;
 }
 .brand-name > span {
@@ -111,7 +111,7 @@ input {
   margin-right: 35px;
 }
 .main-nav a {
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 600;
   color: #515a68;
   transition: color 0.2s;
@@ -121,7 +121,7 @@ input {
   color: var(--red);
 }
 .header-cta {
-  font-size: 11px;
+  font-size: 1rem;
   font-weight: 700;
   background: var(--ink);
   border-radius: 4px;
@@ -175,7 +175,7 @@ input {
   gap: 9px;
   color: #737985;
   font-weight: 700;
-  font-size: 9px;
+  font-size: 0.8125rem;
   letter-spacing: 1.65px;
 }
 .eyebrow span {
@@ -194,7 +194,7 @@ p {
 .help-top h2 {
   font-family: var(--font-display);
   letter-spacing: -3.4px;
-  font-size: 67px;
+  font-size: 4.1875rem;
   line-height: 1.04;
   margin: 20px 0 19px;
   font-weight: 700;
@@ -209,7 +209,7 @@ p {
 .hero-copy > p {
   max-width: 380px;
   color: #747b84;
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 23px;
 }
@@ -220,7 +220,7 @@ p {
   border: 0;
   border-radius: 4px;
   padding: 15px 19px;
-  font-size: 11px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition:
@@ -233,7 +233,7 @@ p {
 }
 .button-dark span {
   color: var(--yellow);
-  font-size: 16px;
+  font-size: 1rem;
 }
 .hero-note {
   display: flex;
@@ -241,10 +241,10 @@ p {
   gap: 10px;
   margin-top: 32px;
   color: #818690;
-  font-size: 10px;
+  font-size: 1rem;
 }
 .note-icon {
-  font-size: 16px;
+  font-size: 1rem;
   color: var(--red);
 }
 .hero-art {
@@ -369,7 +369,7 @@ p {
   border-radius: 40px;
   background: #f8f7f3;
   padding: 10px 13px;
-  font-size: 8px;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.8px;
   z-index: 3;
@@ -405,10 +405,10 @@ p {
   display: block;
 }
 .floating-card strong {
-  font-size: 9px;
+  font-size: 1rem;
 }
 .floating-card small {
-  font-size: 8px;
+  font-size: 0.875rem;
   color: #888;
   margin-top: 4px;
 }
@@ -420,12 +420,12 @@ p {
 .spark-a {
   top: 34%;
   left: 0;
-  font-size: 25px;
+  font-size: 1.5625rem;
 }
 .spark-b {
   right: 10%;
   top: 18%;
-  font-size: 19px;
+  font-size: 1.1875rem;
   color: #daa746;
 }
 .route-line {
@@ -457,12 +457,12 @@ p {
   align-items: center;
   border-top: 1px solid #dedbd2;
   color: #9a9ca0;
-  font-size: 8px;
+  font-size: 1rem;
   letter-spacing: 1.1px;
 }
 .scroll-cue b {
   color: var(--red);
-  font-size: 13px;
+  font-size: 1rem;
   margin-left: 8px;
 }
 .quick-search {
@@ -470,7 +470,7 @@ p {
   background: #fff;
 }
 .section-kicker {
-  font-size: 9px;
+  font-size: 0.8125rem;
   letter-spacing: 1.5px;
   color: #8c9197;
   font-weight: 700;
@@ -498,18 +498,18 @@ p {
   min-width: 250px;
 }
 .search-symbol {
-  font-size: 30px;
+  font-size: 1.875rem;
   color: var(--red);
   transform: rotate(-20deg);
 }
 .search-copy h2 {
   font-family: var(--font-display);
-  font-size: 19px;
+  font-size: 1.1875rem;
   letter-spacing: -0.6px;
   margin: 0 0 5px;
 }
 .search-copy p {
-  font-size: 10px;
+  font-size: 1rem;
   color: #858a91;
   margin: 0;
 }
@@ -528,7 +528,7 @@ p {
   border: 1px solid #e4e1d9;
   border-radius: 3px;
   background: #fff;
-  font-size: 11px;
+  font-size: 1rem;
   color: var(--ink);
   outline: 0;
 }
@@ -541,7 +541,7 @@ p {
   left: 13px;
   z-index: 1;
   color: #868a90;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .button-red {
   white-space: nowrap;
@@ -550,7 +550,7 @@ p {
   padding: 14px 16px;
 }
 .button-red span {
-  font-size: 15px;
+  font-size: 1rem;
 }
 .search-results {
   display: none;
@@ -592,12 +592,12 @@ p {
   height: 28px;
   background: #f7e4df;
   color: var(--red);
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 700;
   border-radius: 3px;
 }
 .result-option span:nth-child(2) {
-  font-size: 10px;
+  font-size: 1rem;
   font-weight: 600;
 }
 .result-arrow {
@@ -611,7 +611,7 @@ p {
   margin-top: 16px;
 }
 .search-shortcuts > span {
-  font-size: 8px;
+  font-size: 1rem;
   letter-spacing: 1px;
   color: #9b9da0;
   margin-right: 5px;
@@ -622,7 +622,7 @@ p {
   background: transparent;
   color: #737984;
   padding: 7px 11px;
-  font-size: 9px;
+  font-size: 1rem;
   cursor: pointer;
 }
 .search-shortcuts button:hover {
@@ -646,7 +646,7 @@ p {
 .section-heading h2,
 .app-copy h2,
 .help-top h2 {
-  font-size: 44px;
+  font-size: 2.75rem;
   letter-spacing: -2.1px;
   line-height: 1.13;
   margin: 16px 0 0;
@@ -654,7 +654,7 @@ p {
 .section-heading > p {
   max-width: 300px;
   color: #81868d;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.8;
   margin: 0 5% 6px 25px;
 }
@@ -694,7 +694,7 @@ p {
   background: #c8ddbf;
 }
 .card-tag {
-  font-size: 8px;
+  font-size: 0.8125rem;
   letter-spacing: 1.3px;
   font-weight: 700;
   z-index: 1;
@@ -705,7 +705,7 @@ p {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  font-size: 21px;
+  font-size: 1.3125rem;
   background: rgba(255, 255, 255, 0.38);
   z-index: 1;
 }
@@ -719,7 +719,7 @@ p {
   z-index: 1;
 }
 .service-card p {
-  font-size: 10px;
+  font-size: 1rem;
   line-height: 1.65;
   max-width: 180px;
   margin: 0;
@@ -738,12 +738,12 @@ p {
   height: 28px;
   display: grid;
   place-items: center;
-  font-size: 13px;
+  font-size: 1rem;
   z-index: 2;
 }
 .card-decoration {
   position: absolute;
-  font-size: 122px;
+  font-size: 7.625rem;
   line-height: 1;
   opacity: 0.085;
   right: -6px;
@@ -751,7 +751,7 @@ p {
   transform: rotate(-15deg);
 }
 .deco-card {
-  font-size: 105px;
+  font-size: 6.5625rem;
   right: -8px;
   top: 45px;
 }
@@ -759,7 +759,7 @@ p {
   top: 38px;
 }
 .deco-business {
-  font-size: 145px;
+  font-size: 9.0625rem;
   right: -15px;
 }
 .student-section {
@@ -822,13 +822,13 @@ p {
 .ticket-top {
   display: flex;
   justify-content: space-between;
-  font-size: 9px;
+  font-size: 1rem;
   letter-spacing: 1px;
   font-weight: 700;
 }
 .ticket-top span + span {
   color: var(--red);
-  font-size: 15px;
+  font-size: 1rem;
 }
 .ticket-stamp {
   font: 800 91px/0.94 var(--font-display);
@@ -837,7 +837,7 @@ p {
   margin: 27px 0 3px;
 }
 .ticket-stamp span {
-  font-size: 36px;
+  font-size: 2.25rem;
   letter-spacing: -3px;
 }
 .ticket-label {
@@ -848,14 +848,14 @@ p {
   position: absolute;
   bottom: 18px;
   left: 18px;
-  font-size: 7px;
+  font-size: 1rem;
   letter-spacing: 1.1px;
   color: #7d8188;
 }
 .student-cap {
   position: absolute;
   z-index: 3;
-  font-size: 62px;
+  font-size: 3.875rem;
   right: 16%;
   top: 14%;
   color: #c93837;
@@ -865,14 +865,14 @@ p {
   position: absolute;
   left: 17%;
   bottom: 15%;
-  font-size: 31px;
+  font-size: 1.9375rem;
   color: #c93837;
 }
 .student-squiggle {
   position: absolute;
   right: 10%;
   bottom: 21%;
-  font-size: 60px;
+  font-size: 3.75rem;
   color: #fff8;
 }
 .student-copy {
@@ -891,7 +891,7 @@ p {
   color: #efbf58;
 }
 .student-copy > p {
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.8;
   color: #bbc0ca;
   max-width: 390px;
@@ -906,11 +906,11 @@ p {
   display: flex;
   gap: 9px;
   color: #bfc4cc;
-  font-size: 9px;
+  font-size: 1rem;
   line-height: 1.6;
 }
 .student-details b {
-  font-size: 9px;
+  font-size: 1rem;
   color: #efbf58;
 }
 .button-light {
@@ -922,7 +922,7 @@ p {
   color: var(--red);
 }
 .student-footnote {
-  font-size: 9px;
+  font-size: 1rem;
   color: #9da4af;
   margin-top: 17px;
 }
@@ -940,20 +940,20 @@ p {
 }
 .app-copy > p {
   max-width: 350px;
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 1.85;
   color: #7a818a;
   margin: 18px 0 22px;
 }
 .text-link {
-  font-size: 11px;
+  font-size: 1rem;
   font-weight: 700;
   color: var(--red);
   border-bottom: 1px solid #e9b9b1;
   padding-bottom: 7px;
 }
 .text-link span {
-  font-size: 14px;
+  font-size: 1rem;
   margin-left: 8px;
 }
 .app-visual {
@@ -996,7 +996,7 @@ p {
 .phone-top {
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 1rem;
   font-weight: 700;
   margin: 3px 1px 23px;
 }
@@ -1008,7 +1008,7 @@ p {
   height: 31px;
   border: 1px solid #ece9e2;
   border-radius: 4px;
-  font-size: 7px;
+  font-size: 1rem;
   color: #92969c;
   padding: 9px;
   margin: 13px 0;
@@ -1068,7 +1068,7 @@ p {
 .map-pin {
   position: absolute;
   color: var(--red);
-  font-size: 14px;
+  font-size: 1rem;
   text-shadow: 0 1px #fff;
 }
 .pin-a {
@@ -1085,7 +1085,7 @@ p {
   right: 14px;
   top: 18px;
   color: #9aa79a;
-  font-size: 6px;
+  font-size: 1rem;
   letter-spacing: 1px;
 }
 .phone-line {
@@ -1102,7 +1102,7 @@ p {
   background: #f7e4df;
   color: var(--red);
   font-weight: 800;
-  font-size: 9px;
+  font-size: 1rem;
   border-radius: 3px;
 }
 .phone-line b,
@@ -1110,10 +1110,10 @@ p {
   display: block;
 }
 .phone-line b {
-  font-size: 8px;
+  font-size: 1rem;
 }
 .phone-line small {
-  font-size: 6px;
+  font-size: 0.875rem;
   color: #9398a1;
   margin-top: 3px;
 }
@@ -1135,7 +1135,7 @@ p {
   color: var(--ink);
   top: 15%;
   left: 9%;
-  font-size: 22px;
+  font-size: 1.375rem;
 }
 .bubble-b {
   width: 38px;
@@ -1144,14 +1144,14 @@ p {
   color: white;
   right: 9%;
   bottom: 22%;
-  font-size: 18px;
+  font-size: 1.125rem;
 }
 .app-caption {
   position: absolute;
   z-index: 1;
   right: -2%;
   bottom: 11%;
-  font-size: 9px;
+  font-size: 1rem;
   line-height: 1.65;
   letter-spacing: 1.3px;
   font-weight: 700;
@@ -1172,11 +1172,11 @@ p {
   justify-content: center;
 }
 .help-top h2 {
-  font-size: 39px;
+  font-size: 2.4375rem;
   margin: 15px 0 9px;
 }
 .help-top > p {
-  font-size: 11px;
+  font-size: 1rem;
   color: #858990;
   margin-bottom: 34px;
 }
@@ -1197,7 +1197,7 @@ p {
   transform: translateY(-3px);
 }
 .help-number {
-  font-size: 8px;
+  font-size: 1rem;
   letter-spacing: 1px;
   color: #9a9da3;
   font-weight: 700;
@@ -1206,7 +1206,7 @@ p {
   position: absolute;
   right: 20px;
   top: 15px;
-  font-size: 25px;
+  font-size: 1.5625rem;
   color: var(--red);
 }
 .help-card h3 {
@@ -1214,14 +1214,14 @@ p {
   margin: 28px 0 7px;
 }
 .help-card p {
-  font-size: 9px;
+  font-size: 1rem;
   line-height: 1.6;
   color: #8b9096;
   margin: 0 0 14px;
   max-width: 240px;
 }
 .help-card > b {
-  font-size: 10px;
+  font-size: 1rem;
 }
 .help-card > b span {
   color: var(--red);
@@ -1250,7 +1250,7 @@ p {
   color: #e24b46;
 }
 .footer-main > p {
-  font-size: 10px;
+  font-size: 0.875rem;
   line-height: 1.7;
   color: #b0b6c0;
   margin: 9px 0;
@@ -1261,19 +1261,19 @@ p {
 }
 .footer-links a,
 .footer-contact a {
-  font-size: 10px;
+  font-size: 0.875rem;
   color: #d5d8de;
 }
 .footer-contact > span,
 .footer-contact small {
   display: block;
-  font-size: 8px;
+  font-size: 0.875rem;
   color: #9ca4af;
   letter-spacing: 0.8px;
 }
 .footer-contact a {
   display: block;
-  font-size: 13px;
+  font-size: 0.875rem;
   font-weight: 700;
   margin: 10px 0 5px;
   color: #fff;
@@ -1286,7 +1286,7 @@ p {
   justify-content: space-between;
   padding-top: 17px;
   color: #9099a8;
-  font-size: 8px;
+  font-size: 0.875rem;
 }
 .footer-bottom b {
   color: #ebbb55;
@@ -1320,13 +1320,13 @@ p {
   color: var(--red);
   background: #f8eae6;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 1.25rem;
 }
 .cookie-banner strong {
-  font-size: 10px;
+  font-size: 1rem;
 }
 .cookie-banner p {
-  font-size: 8px;
+  font-size: 1rem;
   line-height: 1.6;
   color: #7c828a;
   margin: 4px 0 0;
@@ -1342,7 +1342,7 @@ p {
   border: 0;
   border-radius: 3px;
   padding: 10px 13px;
-  font-size: 9px;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -1367,10 +1367,10 @@ p {
     margin-right: 20px;
   }
   .main-nav a {
-    font-size: 10px;
+    font-size: 1rem;
   }
   .header-cta {
-    font-size: 10px;
+    font-size: 1rem;
     padding: 12px;
   }
   .hero {
@@ -1380,7 +1380,7 @@ p {
     min-height: 540px;
   }
   .hero h1 {
-    font-size: 57px;
+    font-size: 3.5625rem;
   }
   .hero-art {
     transform: scale(0.92);
@@ -1398,14 +1398,14 @@ p {
     padding: 16px;
   }
   .service-card h3 {
-    font-size: 15px;
+    font-size: 1rem;
   }
   .student-copy {
     padding-left: 8%;
     padding-right: 7%;
   }
   .student-copy h2 {
-    font-size: 36px;
+    font-size: 2.25rem;
   }
   .app-copy {
     padding-left: 3%;
@@ -1419,7 +1419,7 @@ p {
 }
 @media (max-width: 650px) {
   .announcement {
-    font-size: 9px;
+    font-size: 0.875rem;
   }
   .announcement-divider {
     display: none;
@@ -1435,7 +1435,7 @@ p {
     width: 37px;
   }
   .brand-name {
-    font-size: 17px;
+    font-size: 1.0625rem;
   }
   .header-cta {
     display: none;
@@ -1470,7 +1470,7 @@ p {
     gap: 20px;
   }
   .main-nav a {
-    font-size: 13px;
+    font-size: 1rem;
   }
   .hero {
     display: flex;
@@ -1483,11 +1483,11 @@ p {
     padding: 0;
   }
   .hero h1 {
-    font-size: 55px;
+    font-size: 3.4375rem;
     margin: 17px 0;
   }
   .hero-copy > p {
-    font-size: 12px;
+    font-size: 1rem;
     max-width: 330px;
   }
   .hero-note {
@@ -1507,7 +1507,7 @@ p {
     bottom: 12%;
   }
   .location-pill {
-    font-size: 7px;
+    font-size: 1rem;
   }
   .floating-card {
     right: 0;
@@ -1515,10 +1515,10 @@ p {
     padding: 9px 11px;
   }
   .floating-card strong {
-    font-size: 8px;
+    font-size: 1rem;
   }
   .floating-card small {
-    font-size: 7px;
+    font-size: 0.875rem;
   }
   .shape-back {
     bottom: 21%;
@@ -1532,7 +1532,7 @@ p {
   }
   .hero-bottom,
   .scroll-cue {
-    font-size: 7px;
+    font-size: 1rem;
   }
   .quick-search {
     padding: 57px 6% 60px;
@@ -1580,11 +1580,11 @@ p {
   }
   .section-heading h2,
   .app-copy h2 {
-    font-size: 38px;
+    font-size: 2.375rem;
   }
   .section-heading > p {
     margin: 13px 0 0;
-    font-size: 11px;
+    font-size: 1rem;
   }
   .service-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1595,13 +1595,13 @@ p {
     padding: 14px;
   }
   .service-card h3 {
-    font-size: 14px;
+    font-size: 1rem;
   }
   .service-card p {
-    font-size: 9px;
+    font-size: 1rem;
   }
   .card-tag {
-    font-size: 7px;
+    font-size: 0.8125rem;
   }
   .card-arrow {
     right: 12px;
@@ -1610,7 +1610,7 @@ p {
     height: 25px;
   }
   .card-decoration {
-    font-size: 90px;
+    font-size: 5.625rem;
   }
   .student-section {
     grid-template-columns: 1fr;
@@ -1629,31 +1629,31 @@ p {
     width: 196px;
   }
   .ticket-stamp {
-    font-size: 73px;
+    font-size: 4.5625rem;
     margin-top: 17px;
   }
   .ticket-label {
-    font-size: 19px;
+    font-size: 1.1875rem;
   }
   .student-cap {
     right: 15%;
     top: 9%;
-    font-size: 52px;
+    font-size: 3.25rem;
   }
   .student-copy {
     padding: 42px 7% 47px;
   }
   .student-copy h2 {
-    font-size: 37px;
+    font-size: 2.3125rem;
   }
   .student-copy > p {
-    font-size: 11px;
+    font-size: 1rem;
   }
   .student-details {
     gap: 13px;
   }
   .student-details div {
-    font-size: 8px;
+    font-size: 1rem;
   }
   .app-promo {
     padding-top: 65px;
@@ -1665,7 +1665,7 @@ p {
     padding-left: 0;
   }
   .app-copy > p {
-    font-size: 11px;
+    font-size: 1rem;
   }
   .app-visual {
     height: 390px;
@@ -1688,7 +1688,7 @@ p {
     padding: 60px 6%;
   }
   .help-top h2 {
-    font-size: 35px;
+    font-size: 2.1875rem;
   }
   .help-grid {
     grid-template-columns: 1fr;
@@ -1711,11 +1711,11 @@ p {
     gap: 9px;
   }
   .footer-links a {
-    font-size: 9px;
+    font-size: 0.875rem;
   }
   .footer-bottom {
     gap: 12px;
-    font-size: 7px;
+    font-size: 0.875rem;
   }
   .footer-bottom span:last-child {
     text-align: right;
@@ -1731,10 +1731,10 @@ p {
   }
   .cookie-banner button {
     padding: 9px;
-    font-size: 8px;
+    font-size: 1rem;
   }
   .cookie-banner strong {
-    font-size: 9px;
+    font-size: 1rem;
   }
   .cookie-banner p {
     max-width: 350px;
@@ -1831,7 +1831,7 @@ p {
   place-items: center;
   background: var(--surface);
   color: var(--ink);
-  font-size: 17px;
+  font-size: 1.0625rem;
   cursor: pointer;
   transition:
     background 0.2s,
@@ -2278,7 +2278,7 @@ html[data-theme="dark"] .dropdown-menu a[aria-current="page"] {
   }
 
   .nav-dropdown summary {
-    font-size: 10px;
+    font-size: 1rem;
   }
 
   .header-actions {
@@ -2287,7 +2287,7 @@ html[data-theme="dark"] .dropdown-menu a[aria-current="page"] {
 
   .header-cta {
     padding: 12px;
-    font-size: 10px;
+    font-size: 1rem;
   }
 }
 
@@ -2368,7 +2368,7 @@ html[data-theme="dark"] .dropdown-menu a[aria-current="page"] {
   gap: 9px;
 }
 .footer-link-group strong {
-  font-size: 8px;
+  font-size: 0.875rem;
   letter-spacing: 0.9px;
   color: #9ca4af;
 }
@@ -2556,7 +2556,7 @@ html[data-theme="dark"] .side-card {
 .nav-dropdown summary {
   list-style: none;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 1rem;
   font-weight: 600;
   color: #515a68;
   transition: color 0.2s;
@@ -2590,7 +2590,7 @@ html[data-theme="dark"] .side-card {
 .dropdown-menu a {
   padding: 10px 11px;
   border-radius: 5px;
-  font-size: 11px !important;
+  font-size: 1rem !important;
   color: var(--ink) !important;
 }
 .dropdown-menu a:hover,
@@ -2618,7 +2618,7 @@ html[data-theme="dark"] .side-card {
   }
   .nav-dropdown summary {
     padding: 0;
-    font-size: 13px;
+    font-size: 1rem;
   }
   .dropdown-menu {
     position: static;
@@ -2632,7 +2632,7 @@ html[data-theme="dark"] .side-card {
     background: transparent;
   }
   .dropdown-menu a {
-    font-size: 12px !important;
+    font-size: 1rem !important;
   }
   .nav-dropdown summary:after {
     float: right;
@@ -2644,7 +2644,7 @@ html[data-theme="dark"] .side-card {
     margin-right: 16px;
   }
   .nav-dropdown summary {
-    font-size: 10px;
+    font-size: 1rem;
   }
   .site-header {
     padding-left: 4%;
@@ -2694,10 +2694,10 @@ html[data-theme="dark"] .side-card {
     width: 100%;
   }
   .main-nav > a {
-    font-size: 13px;
+    font-size: 1rem;
   }
   .nav-dropdown summary {
-    font-size: 13px;
+    font-size: 1rem;
   }
   .dropdown-menu {
     position: static;
@@ -2711,7 +2711,7 @@ html[data-theme="dark"] .side-card {
     background: transparent;
   }
   .dropdown-menu a {
-    font-size: 12px !important;
+    font-size: 1rem !important;
   }
   .nav-dropdown summary:after {
     float: right;

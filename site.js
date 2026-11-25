@@ -60,6 +60,10 @@ const header = `
       </details>
     </nav>
     <div class="header-actions">
+      <div class="rp-text-controls" role="group" aria-label="Tamanho do texto">
+        <button type="button" data-text-size="down" aria-label="Diminuir o texto">A−</button>
+        <button type="button" data-text-size="up" aria-label="Aumentar o texto">A+</button>
+      </div>
       <button class="theme-toggle" type="button" aria-label="Ativar modo escuro" title="Alternar tema">
         <span aria-hidden="true">☾</span>
       </button>
@@ -157,3 +161,36 @@ document.querySelectorAll(".nav-dropdown").forEach((group) => {
 
   if (containsCurrentPage) group.classList.add("current-group");
 });
+
+(() => {
+  const levels = [100, 112.5, 125, 150, 175, 200];
+  const down = document.querySelector('[data-text-size="down"]');
+  const up = document.querySelector('[data-text-size="up"]');
+  let index = 0;
+  try { index = Math.max(0, levels.indexOf(Number(localStorage.getItem("riopretrans-texto")))); }
+  catch {}
+
+  function updateSize() {
+    document.documentElement.style.fontSize = levels[index] + "%";
+    document.documentElement.toggleAttribute("data-large-text", levels[index] >= 125);
+    down.disabled = index === 0;
+    up.disabled = index === levels.length - 1;
+  }
+  if (down && up) {
+    updateSize();
+    for (const [button, delta] of [[down, -1], [up, 1]]) {
+      button.addEventListener("click", () => {
+        index = Math.min(levels.length - 1, Math.max(0, index + delta));
+        try { localStorage.setItem("riopretrans-texto", levels[index]); } catch {}
+        updateSize();
+        if (button.disabled) (button === down ? up : down).focus();
+      });
+    }
+  }
+
+  const page = location.pathname.split("/").pop();
+  if (!page || ["index.html", "horarios.html", "planejar.html", "minhas-rotas.html"].includes(page)) {
+    document.querySelector(".header-cta")?.remove();
+  }
+
+})();
