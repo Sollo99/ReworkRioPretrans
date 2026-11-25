@@ -207,13 +207,25 @@ document.querySelectorAll(".nav-dropdown").forEach((group) => {
   let opener = null;
   dialog.querySelector("button").addEventListener("click", () => dialog.close());
   continueLink.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") event.stopPropagation();
+  });
   dialog.addEventListener("close", () => {
-    if (opener?.getClientRects().length) opener.focus();
-    else if (opener) {
-      const nav = opener.closest(".main-nav");
-      if (nav && !nav.getClientRects().length) document.querySelector(".menu-toggle")?.focus();
-      else opener.closest("details")?.querySelector("summary")?.focus();
+    if (!opener?.isConnected) return;
+    const nav = opener.closest(".main-nav");
+    if (nav && !nav.getClientRects().length) {
+      nav.classList.add("open");
+      const menuToggle = document.querySelector(".menu-toggle");
+      menuToggle?.setAttribute("aria-expanded", "true");
+      menuToggle?.setAttribute("aria-label", "Fechar menu");
     }
+    const menu = opener.closest(".nav-dropdown");
+    if (menu) {
+      clearTimeout(menu.closeTimer);
+      menu.open = true;
+      menu.dataset.pinned = "true";
+    }
+    opener.focus();
   });
 
   const intercept = (event) => {

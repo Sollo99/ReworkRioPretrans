@@ -99,7 +99,7 @@ input {
 }
 .brand-name small {
   display: block;
-  font: 700 7px var(--font-body);
+  font: 700 0.875rem var(--font-body);
   letter-spacing: 1.1px;
   color: #727987;
   margin-top: 5px;
@@ -713,7 +713,7 @@ p {
   background: rgba(255, 255, 255, 0.16);
 }
 .service-card h3 {
-  font: 700 17px var(--font-display);
+  font: 700 1.0625rem var(--font-display);
   letter-spacing: -0.5px;
   margin: 0 0 7px;
   z-index: 1;
@@ -831,7 +831,7 @@ p {
   font-size: 1rem;
 }
 .ticket-stamp {
-  font: 800 91px/0.94 var(--font-display);
+  font: 800 5.6875rem/0.94 var(--font-display);
   letter-spacing: -8px;
   color: var(--red);
   margin: 27px 0 3px;
@@ -841,7 +841,7 @@ p {
   letter-spacing: -3px;
 }
 .ticket-label {
-  font: 800 22px/1.08 var(--font-display);
+  font: 800 1.375rem/1.08 var(--font-display);
   letter-spacing: -1px;
 }
 .ticket-bottom {
@@ -882,7 +882,7 @@ p {
   color: #b6bbc4;
 }
 .student-copy h2 {
-  font: 700 42px/1.14 var(--font-display);
+  font: 700 2.625rem/1.14 var(--font-display);
   letter-spacing: -2px;
   margin: 18px 0;
 }
@@ -1001,7 +1001,7 @@ p {
   margin: 3px 1px 23px;
 }
 .phone-title {
-  font: 800 18px/1.16 var(--font-display);
+  font: 800 1.125rem/1.16 var(--font-display);
   letter-spacing: -0.5px;
 }
 .phone-search {
@@ -1210,7 +1210,7 @@ p {
   color: var(--red);
 }
 .help-card h3 {
-  font: 700 15px var(--font-display);
+  font: 700 0.9375rem var(--font-display);
   margin: 28px 0 7px;
 }
 .help-card p {
@@ -2977,3 +2977,38 @@ html[data-theme="dark"] { --rp-focus: #9ecfff; --rp-border: #9ba9b9; }
   }
   html[data-large-text] .site-header .header-cta { display: none; }
 }
+
+.rp-line-notices { margin-bottom: 1rem; }
+
+/* Texto secundário mantém contraste nas superfícies dos dois temas. */
+:root {
+  --copy-secondary: #45586b;
+  --form-note-bg: #f5f3ed;
+}
+html[data-theme="dark"] {
+  --copy-secondary: #b8c2cf;
+  --form-note-bg: #292f38;
+}
+.hero-copy > p,
+.section-heading > p,
+.section-heading .eyebrow,
+.news-strip .eyebrow,
+.service-card .card-tag,
+.service-card p,
+.page-hero-content > p,
+.page-toolbar p,
+.breadcrumbs,
+.breadcrumbs a,
+.breadcrumbs b,
+.route-summary > div > span,
+.contact-form label {
+  color: var(--copy-secondary);
+}
+.service-card h3 { color: var(--ink); }
+.contact-form .form-note { color: var(--copy-secondary); background: var(--form-note-bg); }
+.cookie-banner#cookie-banner p,
+.cookie-banner#cookie-banner p a { color: var(--copy-secondary); }
+.site-footer .footer-bottom { color: #c7d2de; }
+
+.rp-line .result-num { background: #e5eef9; color: #153c61; }
+html[data-theme="dark"] .rp-line .result-num { background: #4b242a; color: #ffb9bf; }

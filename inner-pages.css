@@ -44,7 +44,7 @@
   padding: 0 10px;
   background: #fff;
   color: var(--ink);
-  font: 400 11px var(--font-body);
+  font: 400 0.875rem var(--font-body);
   outline: 0;
 }
 .field-grid input:focus,
@@ -182,7 +182,7 @@
   z-index: 1;
 }
 .page-hero h1 {
-  font: 700 48px/1.1 var(--font-display);
+  font: 700 3rem/1.1 var(--font-display);
   letter-spacing: -2.4px;
   margin: 14px 0 13px;
 }
@@ -221,7 +221,7 @@
 }
 .page-toolbar h2,
 .content-heading {
-  font: 700 23px var(--font-display);
+  font: 700 1.4375rem var(--font-display);
   letter-spacing: -0.8px;
   margin: 0;
 }
@@ -272,7 +272,7 @@
   font-weight: 700;
 }
 .line-card h3 {
-  font: 700 15px var(--font-display);
+  font: 700 0.9375rem var(--font-display);
   margin: 17px 0 6px;
 }
 .line-card p {
@@ -319,7 +319,7 @@
   color: #6f927b;
 }
 .info-banner strong {
-  font: 700 12px var(--font-display);
+  font: 700 0.875rem var(--font-display);
 }
 .info-banner p {
   font-size: 1rem;
@@ -343,12 +343,12 @@
   margin-top: 13px;
 }
 .content-card h2 {
-  font: 700 19px var(--font-display);
+  font: 700 1.1875rem var(--font-display);
   letter-spacing: -0.5px;
   margin: 0 0 15px;
 }
 .content-card h3 {
-  font: 700 13px var(--font-display);
+  font: 700 0.875rem var(--font-display);
   margin: 19px 0 8px;
 }
 .content-card p,
@@ -379,7 +379,7 @@
   color: #aeb5c0;
 }
 .side-card h3 {
-  font: 700 19px/1.25 var(--font-display);
+  font: 700 1.1875rem/1.25 var(--font-display);
   margin: 15px 0 8px;
 }
 .side-card p {
@@ -456,7 +456,7 @@
   font-size: 1.125rem;
 }
 .location-card h3 {
-  font: 700 14px var(--font-display);
+  font: 700 0.875rem var(--font-display);
   margin: 0 0 5px;
 }
 .location-card p {
@@ -516,7 +516,7 @@
   cursor: pointer;
   padding: 16px 24px 16px 0;
   position: relative;
-  font: 700 12px var(--font-display);
+  font: 700 0.875rem var(--font-display);
 }
 .faq-list summary::-webkit-details-marker {
   display: none;
@@ -563,7 +563,7 @@
   letter-spacing: 0.6px;
 }
 .notice-card h3 {
-  font: 700 14px var(--font-display);
+  font: 700 0.875rem var(--font-display);
   margin: 0 0 7px;
 }
 .notice-card p {
@@ -582,7 +582,7 @@
   gap: 12px;
 }
 .policy-copy h2 {
-  font: 700 17px var(--font-display);
+  font: 700 1.0625rem var(--font-display);
   margin: 27px 0 8px;
 }
 .policy-copy h2:first-child {
@@ -829,7 +829,7 @@ html[data-theme="dark"] .dropdown-menu a[aria-current="page"] {
   padding: 10px;
   background: #fff;
   color: var(--ink);
-  font: 400 11px var(--font-body);
+  font: 400 0.875rem var(--font-body);
   resize: vertical;
   outline: 0;
 }
@@ -928,7 +928,7 @@ html[data-theme="dark"] .field-label {
 
 .route-detail-heading h2 {
   margin: 0;
-  font: 800 24px/1.25 var(--font-display);
+  font: 800 1.5rem/1.25 var(--font-display);
   text-transform: capitalize;
 }
 
@@ -953,7 +953,7 @@ html[data-theme="dark"] .field-label {
 }
 
 .route-summary strong {
-  font: 700 14px var(--font-display);
+  font: 700 0.875rem var(--font-display);
 }
 
 .schedule-period {
@@ -964,7 +964,7 @@ html[data-theme="dark"] .field-label {
 .schedule-period h3,
 .route-itinerary h3 {
   margin: 0 0 12px;
-  font: 700 12px var(--font-display);
+  font: 700 0.875rem var(--font-display);
   color: var(--ink);
 }
 
@@ -1055,4 +1055,14 @@ html[data-theme="dark"] .page-hero h1 em {
 
 .page-hero-content > h1 {
   margin-top: 0;
+}
+
+/* Cores e dimensões que acompanham a ampliação do texto. */
+.page-hero .page-hero-content > p, .page-toolbar p, .field-label { color: var(--copy-secondary); }
+.page-hero h1, .route-detail-heading h2, .notice-card { overflow-wrap: anywhere; }
+.field-label + .official-line-select { border-color: var(--rp-border, #62758a); }
+
+html[data-theme="dark"] .result-num {
+  background: #4b242a;
+  color: #ffb9bf;
 }
