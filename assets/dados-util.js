@@ -46,12 +46,15 @@
     }
     return date;
   };
-  RP.tipoDeDia = (date) => {
+  RP.tipoDeDia = (date, referencia = RP.agora()) => {
     const day = String(date.getDate()).padStart(2, "0");
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const md = month + "-" + day;
+    const mesmoDia = date.getFullYear() === referencia.getFullYear() &&
+      date.getMonth() === referencia.getMonth() && date.getDate() === referencia.getDate();
+    const simulado = mesmoDia && RP.parametros().simular.has("feriado");
     const feriado = holidays.includes(md) || municipal.includes(md) ||
-      municipal.includes(date.getFullYear() + "-" + md) || RP.parametros().simular.has("feriado");
+      municipal.includes(date.getFullYear() + "-" + md) || simulado;
     return { tipo: feriado || date.getDay() === 0 ? "dom" : date.getDay() === 6 ? "sab" : "util", feriado };
   };
   RP.juntarPeriodos = (periods = []) => {
@@ -73,20 +76,20 @@
     }
     return days;
   };
-  const minutes = (time) => Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
+  RP.minutosDoDia = (time) => Number(time.slice(0, 2)) * 60 + Number(time.slice(3));
   RP.gruposDistintos = (list) => new Set(list.map(({ grupo }) => grupo).filter(Boolean)).size;
   RP.proximosHorarios = (line, date, count = 3) => {
     const days = RP.juntarPeriodos(line?.periods);
-    const { tipo, feriado } = RP.tipoDeDia(date);
+    const { tipo, feriado } = RP.tipoDeDia(date, date);
     const now = date.getHours() * 60 + date.getMinutes();
     const today = days[tipo];
-    const proximos = today.filter(({ hora }) => minutes(hora) >= now).slice(0, count)
-      .map((entry) => ({ ...entry, minutos: minutes(entry.hora) - now }));
+    const proximos = today.filter(({ hora }) => RP.minutosDoDia(hora) >= now).slice(0, count)
+      .map((entry) => ({ ...entry, minutos: RP.minutosDoDia(entry.hora) - now }));
     let futuro = null;
     for (let offset = 1; !proximos.length && offset <= 7; offset += 1) {
       const nextDay = new Date(date);
       nextDay.setDate(nextDay.getDate() + offset);
-      const entry = days[RP.tipoDeDia(nextDay).tipo][0];
+      const entry = days[RP.tipoDeDia(nextDay, date).tipo][0];
       if (entry) { futuro = { ...entry, offset, date: nextDay }; break; }
     }
     return { tipo, feriado, hoje: today, proximos, futuro };

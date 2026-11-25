@@ -61,7 +61,7 @@
     }).map((line) => ({ line, times: RP.proximosHorarios(line, date) }))
       .sort((a, b) => {
         const rank = ({ times }) => times.proximos[0]?.minutos ??
-          (times.futuro ? times.futuro.offset * 1440 + Number(times.futuro.hora.replace(":", "")) : Infinity);
+          (times.futuro ? times.futuro.offset * 1440 + RP.minutosDoDia(times.futuro.hora) : Infinity);
         return rank(a) - rank(b);
       });
   };
