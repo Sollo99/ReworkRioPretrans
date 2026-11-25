@@ -15,3 +15,6 @@ Desktop.ini
 node_modules/
 __pycache__/
 *.pyc
+
+# Ferramentas locais do projeto
+/tools/
