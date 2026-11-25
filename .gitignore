@@ -1,0 +1,17 @@
+# Materiais locais da atividade de IHC
+/Estudo_de_Caso_RioPretransEdit.docx
+/Estudo_de_Caso_RioPretransEdit2.pdf
+/Prompt_Atualizacao_Prototipo_RioPretrans.md
+~$*.docx
+
+# Arquivos temporários e do sistema
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+*.log
+
+# Dependências e cache local
+node_modules/
+__pycache__/
+*.pyc
