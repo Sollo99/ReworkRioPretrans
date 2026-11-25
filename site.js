@@ -41,6 +41,8 @@ const header = `
         <summary>Serviços</summary>
         <div class="dropdown-menu">
           <a href="horarios.html">Linhas e Horários</a>
+          <a href="planejar.html">Planejar viagem</a>
+          <a href="minhas-rotas.html">Minhas rotas</a>
           <a href="portal-info.html?page=venda-de-creditos">Venda de Créditos</a>
           <a href="https://ww01.rptrans.com.br/fenix/login.php" target="_blank" rel="noreferrer">Sistema online ↗</a>
           <a href="estudante.html">Área do Estudante</a>
@@ -82,6 +84,8 @@ const footer = `
         <div class="footer-link-group">
           <strong>SERVIÇOS</strong>
           <a href="horarios.html">Linhas e Horários</a>
+          <a href="planejar.html">Planejar viagem</a>
+          <a href="minhas-rotas.html">Minhas rotas</a>
           <a href="portal-info.html?page=venda-de-creditos">Venda de Créditos</a>
           <a href="integracao.html">Tabela de Integração</a>
           <a href="estudante.html">Área do Estudante</a>
