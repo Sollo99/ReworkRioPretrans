@@ -193,4 +193,45 @@ document.querySelectorAll(".nav-dropdown").forEach((group) => {
     document.querySelector(".header-cta")?.remove();
   }
 
+  document.body.insertAdjacentHTML("beforeend", `
+    <dialog class="rp-dialog" aria-labelledby="rp-leave-title">
+      <h2 id="rp-leave-title">Você vai sair deste site</h2>
+      <p id="rp-leave-description"></p>
+      <div class="rp-actions">
+        <button type="button" class="button button-outline" autofocus>Voltar</button>
+        <a class="button button-dark" target="_blank" rel="noreferrer">Continuar</a>
+      </div>
+    </dialog>`);
+  const dialog = document.querySelector(".rp-dialog");
+  const continueLink = dialog.querySelector("a");
+  let opener = null;
+  dialog.querySelector("button").addEventListener("click", () => dialog.close());
+  continueLink.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("close", () => {
+    if (opener?.getClientRects().length) opener.focus();
+    else if (opener) {
+      const nav = opener.closest(".main-nav");
+      if (nav && !nav.getClientRects().length) document.querySelector(".menu-toggle")?.focus();
+      else opener.closest("details")?.querySelector("summary")?.focus();
+    }
+  });
+
+  const intercept = (event) => {
+    if (event.type === "auxclick" && event.button !== 1) return;
+    const link = event.target.closest?.("a[href]");
+    if (!link) return;
+    const url = new URL(link.href, location.href);
+    if (url.hostname !== "ww01.rptrans.com.br") return;
+    event.preventDefault();
+    event.stopPropagation();
+    opener = link;
+    const name = url.pathname.includes("/fenix/") ? "O sistema do cartão (Fenix)" :
+      url.pathname.includes("/portal_estudante/") ? "O portal do estudante" : "Este sistema";
+    dialog.querySelector("p").textContent =
+      name + " fica em outro site da RioPretrans, com outra aparência: ww01.rptrans.com.br.";
+    continueLink.href = url.href;
+    if (!dialog.open) dialog.showModal();
+  };
+  document.addEventListener("click", intercept, true);
+  document.addEventListener("auxclick", intercept, true);
 })();

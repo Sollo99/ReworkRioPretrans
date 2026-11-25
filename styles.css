@@ -2902,6 +2902,12 @@ html[data-theme="dark"] { --rp-focus: #9ecfff; --rp-border: #9ba9b9; }
   font: inherit; font-weight: 700; cursor: pointer;
 }
 .rp-text-controls button:disabled { opacity: 0.55; cursor: not-allowed; }
+.rp-dialog {
+  width: min(100% - 2rem, 28rem); max-height: calc(100% - 2rem); overflow: auto;
+  padding: 1rem; border: 1px solid var(--rp-border, #62758a); border-radius: 0.75rem;
+  background: var(--paper); color: var(--ink);
+}
+.rp-dialog::backdrop { background: rgb(0 0 0 / 0.6); }
 .rp-field-error { display: block; color: var(--rp-error, #a71324); font-size: 0.875rem; }
 .contact-form [aria-invalid="true"] { border: 2px solid var(--rp-error, #a71324); }
 .field-grid > * { min-width: 0; }
