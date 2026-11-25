@@ -234,4 +234,5 @@ document.querySelectorAll(".nav-dropdown").forEach((group) => {
   };
   document.addEventListener("click", intercept, true);
   document.addEventListener("auxclick", intercept, true);
+  if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js").catch(() => {});
 })();
