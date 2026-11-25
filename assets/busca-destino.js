@@ -86,6 +86,10 @@
     </button>`).join("");
 
   RP.conectarBusca = (input, results, { choose, lines = false, change = () => {}, rendered = () => {}, focus = true }) => {
+    const error = document.createElement("p");
+    error.className = "rp-search-error";
+    error.setAttribute("role", "alert");
+    results.before(error);
     const draw = () => {
       const value = input.value.trim();
       const matches = RP.sugerir(value, lines);
@@ -94,10 +98,10 @@
         .filter(([number, name]) => number === term || (term.length >= 2 && RP.normalizar(name).includes(term))).slice(0, 3) : [];
       const missing = !matches.length && !lineMatches.length && value.length >= 3;
       const similar = missing ? RP.parecidos(value) : [];
+      const message = missing ? "Não achamos esse lugar. Tente o nome da rua ou do bairro, sem o número." : "";
+      if (error.textContent !== message) error.textContent = message;
       results.innerHTML = RP.listaResultados(matches) + (lineMatches.length ? "<h2>Linhas</h2>" + lineMatches.map(([num, name]) =>
         `<a class="rp-suggestion" href="${esc(RP.comParametros("horarios.html?linha=" + encodeURIComponent(num)))}">Linha ${esc(num)} · ${esc(name)}</a>`).join("") : "") +
-        (missing ?
-          '<p role="status"><strong>Não achamos esse lugar.</strong> Tente o nome da rua ou do bairro, sem o número.</p>' : "") +
         (similar.length ? "<p>Ruas com nome parecido:</p>" + RP.listaResultados(similar) : "");
       rendered(missing);
     };

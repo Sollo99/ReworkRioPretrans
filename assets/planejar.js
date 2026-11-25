@@ -24,6 +24,7 @@
 
   if (saved) {
     const feedback = document.querySelector("#rp-feedback");
+    const savedError = document.querySelector("#rp-saved-error");
     const drawSaved = () => {
       const items = RP.listaLocal(savedKey);
       saved.innerHTML = items.length ? items.map((item) => `
@@ -37,17 +38,20 @@
     saved.addEventListener("click", (event) => {
       const remove = event.target.closest("[data-remove]");
       if (!remove) return;
+      savedError.textContent = "";
+      feedback.textContent = "";
       if (RP.gravarJSON(savedKey, RP.listaLocal(savedKey).filter((item) => item.id !== remove.dataset.remove))) {
         drawSaved();
         feedback.textContent = "Rota removida.";
         (saved.querySelector("a") || document.querySelector("h1")).focus();
-      } else feedback.textContent = "Não foi possível remover neste navegador.";
+      } else savedError.textContent = "Não foi possível remover neste navegador.";
     });
     document.querySelector("#rp-saved-step").innerHTML = demoLabel("Passo 17");
     drawSaved();
   }
   if (!main) return;
   const feedback = document.querySelector("#rp-feedback");
+  const plannerError = document.querySelector("#rp-error");
   const initialText = params.get("destino") || "";
   let destination = RP.local(initialText);
   let destText = destination?.label || initialText;
@@ -104,7 +108,8 @@
     if (next === "nenhuma") drawNoRoute(panel);
     if (next === "pronta") drawRoute(panel);
     if (next === "opcoes") drawOptions(panel);
-    announce(next === "busca" || next === "pronta" || next === "erro" || next === "nenhuma" ? title : "");
+    announce(next === "busca" || next === "pronta" ? title : "");
+    plannerError.textContent = next === "erro" || next === "nenhuma" ? title : "";
     main.querySelector("h1").focus();
   }
 
@@ -163,12 +168,14 @@
         <div class="rp-results"></div>
       </div>
       <p id="rp-origin-choice" role="status"></p>
+      <p class="rp-error-message" id="rp-origin-error" role="alert"></p>
       ${actions(button("search", "Buscar linhas", true), button("change", "Mudar o destino"))}`;
     const group = panel.querySelector("#rp-origin-group");
     const choice = panel.querySelector("#rp-origin-choice");
     const input = group.querySelector("input");
     const submit = panel.querySelector('[data-action="search"]');
     const sync = () => {
+      panel.querySelector("#rp-origin-error").textContent = "";
       submit.disabled = !origin;
       choice.textContent = manual && origin ? "Origem escolhida: " + originLabel() : "";
     };
@@ -238,6 +245,7 @@
         `<a class="button button-outline" data-share href="https://wa.me/?text=${esc(encodeURIComponent(share))}" target="_blank" rel="noreferrer">Enviar pelo WhatsApp</a>`,
         button("notify", "Avisar onde descer"))}
       <div id="rp-route-status" role="status"></div>
+      <p class="rp-error-message" id="rp-route-error" role="alert"></p>
       ${actions(candidates.length > 1 ? button("options", "Outras opções") : "", button("new", "Nova busca"))}
       <details class="rp-itinerary">
         <summary>Ver o caminho da linha (${line.stops.length} ruas)</summary>
@@ -265,7 +273,8 @@
     const originKey = origin === locationKey ? "terminal central" : origin;
     if (!origin || !destination) return;
     if (originKey === (destination.routeKey || destination.key)) {
-      announce("O destino é o mesmo lugar de onde você sai.");
+      main.querySelector("#rp-origin-error").textContent = "O destino é o mesmo lugar de onde você sai.";
+      main.querySelector('[data-action="change"]').focus();
       return;
     }
     remember();
@@ -298,8 +307,9 @@
       "Rota salva. Abre sem internet em Minhas rotas." : "Rota salva em Minhas rotas." :
       "Não foi possível salvar neste navegador.";
     setStep("Passos 16 e 17");
+    main.querySelector("#rp-route-error").textContent = ok ? "" : message;
     main.querySelector("#rp-route-status").innerHTML =
-      `<p>${message} <a href="${routesHref}">Ver Minhas rotas</a></p>`;
+      `<p>${ok ? message + " " : ""}<a href="${routesHref}">Ver Minhas rotas</a></p>`;
   }
 
   function back() {
@@ -330,6 +340,7 @@
       case "save": saveRoute(); break;
       case "notify":
         setStep("Passos 16 e 17");
+        main.querySelector("#rp-route-error").textContent = "";
         main.querySelector("#rp-route-status").textContent =
           "Aviso ativado (simulação): o app avisaria quando o ônibus estivesse chegando a " + destination.label + ".";
         break;
