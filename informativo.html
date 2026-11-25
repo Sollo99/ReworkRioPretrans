@@ -49,26 +49,12 @@
             </p>
           </div>
         </div>
-        <div class="notice-list">
-          <article class="notice-card">
-            <div class="notice-date">PORTAL<br />OFICIAL</div>
-            <div>
-              <h3>Comunicados publicados pela RioPretrans</h3>
-              <p>
-                A listagem de informativos é mantida pelo portal oficial; acesse
-                para ver os avisos mais recentes.
-              </p>
-              <div class="page-actions">
-                <a
-                  class="button button-outline"
-                  href="https://www.riopretrans.com.br/informativo"
-                  target="_blank"
-                  rel="noreferrer"
-                  >Abrir informativos oficiais <span>↗</span></a
-                >
-              </div>
-            </div>
-          </article>
+        <div id="avisos-lista" class="notice-list" aria-live="polite">
+          <p>Nenhum aviso no momento.</p>
+        </div>
+        <div class="page-actions">
+          <a class="button button-outline" href="https://www.riopretrans.com.br/informativo"
+             target="_blank" rel="noreferrer">Abrir informativos oficiais <span>↗</span></a>
         </div>
         <article class="content-card" style="margin-top: 16px">
           <h2>Precisa consultar uma linha agora?</h2>
@@ -92,6 +78,7 @@
     </main>
     <div data-site-footer></div>
     <script src="site.js"></script>
+    <script src="assets/avisos.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

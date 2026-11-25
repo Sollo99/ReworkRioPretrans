@@ -180,6 +180,7 @@ function renderRouteDetail(route) {
     ${stopList.length ? '<section class="route-itinerary"><h3>Itinerário</h3><p>Caminho do ônibus, na ordem do quadro oficial.</p><ol>' +
       stopList.map(({ label, bairro }) => "<li>" + esc(label) + (bairro ? " · bairro" : "") + "</li>").join("") + "</ol></section>" : ""}
     <p class="route-data-note">${RP.DADOS}</p>`;
+  window.RioPretransAvisos?.renderLine(routeDetail, route[0]);
 }
 
 if (routeDetail) {
