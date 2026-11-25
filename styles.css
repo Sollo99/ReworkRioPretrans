@@ -2902,6 +2902,8 @@ html[data-theme="dark"] { --rp-focus: #9ecfff; --rp-border: #9ba9b9; }
   font: inherit; font-weight: 700; cursor: pointer;
 }
 .rp-text-controls button:disabled { opacity: 0.55; cursor: not-allowed; }
+.rp-field-error { display: block; color: var(--rp-error, #a71324); font-size: 0.875rem; }
+.contact-form [aria-invalid="true"] { border: 2px solid var(--rp-error, #a71324); }
 .field-grid > * { min-width: 0; }
 .schedule-times span { min-height: 44px; font-size: 1.125rem; }
 .schedule-times .rp-next-time { outline: 2px solid currentColor; }

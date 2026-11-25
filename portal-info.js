@@ -181,16 +181,16 @@ const infoPages = {
         <h2>Escreva para a equipe</h2>
         <form class="contact-form" id="official-contact-form" novalidate>
           <p class="form-note" id="contact-note">Protótipo acadêmico: este formulário não envia dados.</p>
+          <p class="form-note">* campo obrigatório</p>
           <div class="field-grid">
-            <label>Nome *<input name="nome" id="nome" autocomplete="name" required /></label>
+            <label>Nome <span aria-hidden="true">*</span><input name="nome" id="nome" autocomplete="name" required aria-required="true" /></label>
             <label>CPF<input name="cpf" id="cpf" inputmode="numeric" autocomplete="off" /></label>
             <label>Número do cartão<input name="cartao" id="cartao" autocomplete="off" /></label>
-            <label>E-mail *<input name="email" id="email" type="email" autocomplete="email" required /></label>
-            <label>Telefone *<input name="fone" id="fone" type="tel" autocomplete="tel" required /></label>
-            <label>Assunto *<input name="assunto" id="assunto" required /></label>
-            <label class="field-wide">Mensagem *<textarea name="msg" id="msg" rows="5" required></textarea></label>
+            <label>E-mail <span aria-hidden="true">*</span><input name="email" id="email" type="email" autocomplete="email" required aria-required="true" /></label>
+            <label>Telefone <span aria-hidden="true">*</span><input name="fone" id="fone" type="tel" autocomplete="tel" required aria-required="true" /></label>
+            <label>Assunto <span aria-hidden="true">*</span><input name="assunto" id="assunto" required aria-required="true" /></label>
+            <label class="field-wide">Mensagem <span aria-hidden="true">*</span><textarea name="msg" id="msg" rows="5" required aria-required="true"></textarea></label>
           </div>
-          <p class="form-note" id="contact-error" role="alert"></p>
           <button class="button button-dark" type="submit" disabled>Enviar mensagem <span>→</span></button>
         </form>
         <div role="status" id="contact-status"></div>
@@ -216,20 +216,54 @@ document.querySelector("#portal-content").innerHTML = page.content;
 const contactForm = document.querySelector("#official-contact-form");
 
 if (contactForm) {
+  const messages = {
+    nome: "Preencha o seu nome.",
+    email: "Preencha o seu e-mail.",
+    fone: "Preencha um telefone com DDD.",
+    assunto: "Preencha o assunto.",
+    msg: "Escreva a sua mensagem.",
+  };
+  const fields = [...contactForm.querySelectorAll("[required]")];
+
+  function validateContact(field) {
+    let message = field.value.trim() ? "" : messages[field.name];
+    if (!message && field.name === "email" && field.validity.typeMismatch) {
+      message = "Digite um e-mail válido, como nome@exemplo.com.";
+    }
+    if (!message && field.name === "fone" && !/^\d{10,11}$/.test(field.value.replace(/\D/g, ""))) {
+      message = messages.fone;
+    }
+    const id = "contact-error-" + field.id;
+    let error = document.getElementById(id);
+    if (message) {
+      if (!error) {
+        error = document.createElement("span");
+        error.id = id;
+        error.className = "rp-field-error";
+        error.setAttribute("role", "alert");
+        field.after(error);
+      }
+      if (error.textContent !== message) error.textContent = message;
+      field.setAttribute("aria-invalid", "true");
+      field.setAttribute("aria-describedby", id);
+    } else {
+      error?.remove();
+      field.removeAttribute("aria-invalid");
+      field.removeAttribute("aria-describedby");
+    }
+    return !message;
+  }
+
+  for (const field of fields) {
+    field.addEventListener("input", () => {
+      if (field.hasAttribute("aria-invalid")) validateContact(field);
+    });
+  }
+
   contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
-
-    const invalidField = [...contactForm.elements].find(
-      (field) => !field.validity.valid || (field.required && !field.value.trim()),
-    );
-
-    if (invalidField) {
-      document.querySelector("#contact-error").textContent =
-        "Confira os campos obrigatórios e tente de novo.";
-      invalidField.focus();
-      return;
-    }
-
+    const invalid = fields.filter((field) => !validateContact(field));
+    if (invalid.length) { invalid[0].focus(); return; }
     const status = document.querySelector("#contact-status");
     status.tabIndex = -1;
     status.textContent =
@@ -237,6 +271,5 @@ if (contactForm) {
     status.focus();
     contactForm.remove();
   });
-
   contactForm.querySelector('button[type="submit"]').disabled = false;
 }
