@@ -124,7 +124,16 @@ function drawLines(query = "") {
   if (lineCount)
     lineCount.textContent = `${filtered.length} ${filtered.length === 1 ? "linha encontrada" : "linhas encontradas"}`;
   const empty = document.querySelector("#line-empty");
-  if (empty) empty.hidden = filtered.length > 0;
+  if (empty) {
+    empty.hidden = filtered.length > 0;
+    let redirect = empty.querySelector("a");
+    if (!redirect) {
+      redirect = document.createElement("a");
+      redirect.textContent = "Procurando uma rua ou bairro? Planejar viagem →";
+      empty.append(document.createElement("br"), redirect);
+    }
+    redirect.href = "planejar.html?destino=" + encodeURIComponent(query);
+  }
 }
 
 const routeDetail = document.querySelector("#route-detail");

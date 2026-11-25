@@ -120,12 +120,8 @@ const footer = `
 `;
 
 const cookie = `
-  <div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Aviso sobre cookies">
-    <div class="cookie-icon">◒</div>
-    <div>
-      <strong>Preferências de privacidade</strong>
-      <p>Utilizamos cookies para aprimorar sua experiência. Ao continuar, você concorda com nossa <a href="privacidade.html">política de privacidade</a>.</p>
-    </div>
+  <div class="cookie-banner" id="cookie-banner" role="region" aria-label="Aviso sobre cookies">
+    <p>Usamos cookies. <a href="privacidade.html">Política de privacidade</a></p>
     <button id="cookie-accept">Aceitar</button>
   </div>
 `;

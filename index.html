@@ -20,15 +20,34 @@
   <body>
     <div data-site-header></div>
     <main>
+      <section class="rp-shell rp-home" aria-labelledby="rp-home-title">
+        <p id="rp-home-step" class="rp-meta" hidden>Modo apresentação · Passo 3</p>
+        <h1 id="rp-home-title">Para onde você vai?</h1>
+        <form id="rp-home-form" class="rp-form" action="planejar.html">
+          <label for="rp-home-destination">Digite a rua, o bairro ou o lugar</label>
+          <input id="rp-home-destination" name="destino" type="search" autocomplete="off" placeholder="Ex.: Bady Bassitt" required>
+          <button class="button button-dark" type="submit">Buscar</button>
+          <div class="rp-results"></div>
+        </form>
+        <div class="rp-primary-links">
+          <a class="button button-outline" href="horarios.html">Horário da minha linha</a>
+          <a class="button button-outline" href="recarga.html">Cartão</a>
+        </div>
+
+      </section>
+      <div class="rp-shell rp-home-extra">
+        <div id="rp-home-recents" class="rp-recents"></div>
+        <a class="rp-saved-link" href="minhas-rotas.html">Minhas rotas</a>
+      </div>
       <section class="hero" id="inicio">
         <div class="hero-copy">
-          <h1>A cidade vai com <em>você.</em></h1>
+          <h2>A cidade vai com <em>você.</em></h2>
           <p>
             Encontre sua linha e consulte os horários para planejar seu
             deslocamento pela cidade.
           </p>
-          <a class="button button-dark" href="linhas.html"
-            >Encontrar minha linha <span>→</span></a
+          <a class="button button-dark" href="planejar.html"
+            >Planejar uma viagem <span>→</span></a
           >
         </div>
         <div
@@ -118,6 +137,10 @@
     <div data-site-footer></div>
     <script src="site.js"></script>
     <script src="assets/official-lines.js"></script>
+    <script src="assets/official-schedules.js"></script>
+    <script src="assets/lugares.js"></script>
+    <script src="assets/dados-util.js"></script>
+    <script src="assets/busca-destino.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
