@@ -2,7 +2,7 @@
 
 // Troque a versão a cada publicação que alterar os arquivos locais.
 const prefix = "riopretrans-fluxo-";
-const version = prefix + "v2";
+const version = prefix + "v3";
 const assets = [
   "./", "index.html", "ajuda.html", "empresas.html", "estudante.html",
   "formulario-frequencia.html", "frota.html", "horarios.html", "informativo.html",
