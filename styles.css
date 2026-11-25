@@ -1795,7 +1795,9 @@ p {
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-image: url("assets/riopretrans-bus-hero.png");
+  background-image: url("assets/riopretrans-bus-hero.jpg");
+  background-image: image-set(url("assets/riopretrans-bus-hero.webp") type("image/webp"),
+    url("assets/riopretrans-bus-hero.jpg") type("image/jpeg"));
   background-size: cover;
   background-position: 52% center;
   filter: saturate(0.78) contrast(0.91);
