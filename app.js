@@ -131,23 +131,46 @@ const routeDetail = document.querySelector("#route-detail");
 function renderRouteDetail(route) {
   if (!routeDetail) return;
   if (!route) {
-    routeDetail.textContent = 'Selecione uma linha para consultar horários e itinerário.';
+    routeDetail.innerHTML = '<p class="route-empty">Selecione uma linha para consultar horários e itinerário.</p>';
     return;
   }
+  const RP = window.RP;
+  const esc = RP.escape;
   const schedule = window.riopretransSchedules?.find((item) => item.number === route[0]);
-  const title = document.createElement('h2');
-  title.textContent = 'Linha ' + route[0] + ' · ' + route[1];
-  routeDetail.replaceChildren(title);
-  const add = (label, content) => {
-    const item = document.createElement('p');
-    item.textContent = label + content;
-    routeDetail.append(item);
-  };
-  add('Plataforma: ', schedule?.platform || 'Consulte no terminal');
-  for (const {label, times} of schedule?.periods || []) add(label + ': ', times.join(' · '));
-  if (!schedule?.periods.length) add('', 'Horários indisponíveis para esta linha.');
-  if (schedule?.path) add('Itinerário: ', schedule.path);
-  add('', 'Dados do portal RioPretrans capturados em 15/10/2026. Os horários podem sofrer alterações.');
+  const days = RP.juntarPeriodos(schedule?.periods);
+  const next = RP.proximosHorarios(schedule, RP.agora());
+  const grouped = RP.gruposDistintos(Object.values(days).flat()) > 1;
+  const first = next.proximos[0];
+  const stopList = RP.itinerario(schedule);
+  const titles = { util: "Dias úteis (segunda a sexta)", sab: "Sábado", dom: "Domingo e feriado" };
+  const cards = Object.entries(days).filter(([, entries]) => entries.length).map(([type, entries]) => `
+    <section class="schedule-period">
+      <h3>${titles[type]}</h3>
+      <div class="schedule-times">${entries.map((entry) => {
+        const upcoming = type === next.tipo && first?.hora === entry.hora && first?.grupo === entry.grupo;
+        return `<span${upcoming ? ' class="rp-next-time"' : ""}>${RP.horaComGrupo(entry, grouped)}${upcoming ? " · próximo" : ""}</span>`;
+      }).join("")}</div>
+    </section>`).join("");
+  const summary = first ? `<p><strong>Próximo ônibus hoje: ${RP.horaComGrupo(first, grouped)}</strong>
+    ${RP.textoEspera(first.minutos) ? "(" + RP.textoEspera(first.minutos) + ")" : ""}</p>
+    ${next.proximos.length > 1 ? "<p>Depois: " + next.proximos.slice(1).map((entry) =>
+      RP.horaComGrupo(entry, grouped)).join(" · ") + "</p>" : ""}` : "<p>" + RP.descreverProximos(next) + "</p>";
+  routeDetail.innerHTML = `
+    <div class="route-detail-heading">
+      <span class="result-num">${esc(route[0])}</span>
+      <div><h2>${esc(route[1])}</h2></div>
+    </div>
+    ${cards ? `<div class="rp-ticket" role="status">${summary}
+      ${next.feriado ? "<p>" + RP.FERIADO + "</p>" : ""}</div>` : ""}
+    <div class="route-summary">
+      <div><span>Plataforma</span><strong>${esc(schedule?.platform || "Não informada no quadro oficial")}</strong></div>
+      <div><span>Tempo médio</span><strong>${esc(schedule?.duration || "Consulte o itinerário")}</strong></div>
+    </div>
+    ${cards || '<p class="route-unavailable">O portal oficial não disponibilizou horários estruturados para esta linha. <a href="tel:1733538322">Consulte o atendimento</a> para confirmar as partidas.</p>'}
+    ${grouped ? "<p>" + RP.LEGENDA_GRUPOS + "</p>" : ""}
+    ${stopList.length ? '<section class="route-itinerary"><h3>Itinerário</h3><p>Caminho do ônibus, na ordem do quadro oficial.</p><ol>' +
+      stopList.map(({ label, bairro }) => "<li>" + esc(label) + (bairro ? " · bairro" : "") + "</li>").join("") + "</ol></section>" : ""}
+    <p class="route-data-note">${RP.DADOS}</p>`;
 }
 
 if (routeDetail) {
@@ -186,8 +209,8 @@ if (officialLineSelect) {
   officialLineSelect.value = selectedNumber;
   officialLineSelect.addEventListener("change", () => {
     if (officialLineSelect.value)
-      window.location.href = `horarios.html?linha=${encodeURIComponent(officialLineSelect.value)}`;
-    else window.location.href = "horarios.html";
+      window.location.href = window.RP.comParametros(`horarios.html?linha=${encodeURIComponent(officialLineSelect.value)}`);
+    else window.location.href = window.RP.comParametros("horarios.html");
   });
 }
 
